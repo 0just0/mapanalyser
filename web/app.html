@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+        crossorigin="" />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+        crossorigin=""></script>
+
+    <link rel="stylesheet" href="./app.css">
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <!-- As a heading -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" class="d-block mb-2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
+                    <line x1="9.69" y1="8" x2="21.17" y2="8"></line>
+                    <line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
+                    <line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
+                    <line x1="14.31" y1="16" x2="2.83" y2="16"></line>
+                    <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
+                </svg>
+            </span>
+        </div>
+
+    </nav>
+
+    <h1 class="title">Check out price of your appartments in Boston!</h1>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6 offset-2">
+                <div id="map"></div>
+            </div>
+            <div class="col-2">
+                <div id="legend">
+                    <b>2-bedrooms</b>
+                    <p>
+                        <p>
+                            <font color="#000003">&#9608;</font>
+                            <span>$4000&ndash;</span>
+                            <br>
+                            <font color="#07051b">&#9608;</font>
+                            <span>$3800&ndash;$4000</span>
+                            <br>
+                            <font color="#150e38">&#9608;</font>
+                            <span>$3600&ndash;$3800</span>
+                            <br>
+                            <font color="#28115a">&#9608;</font>
+                            <span>$3400&ndash;$3600</span>
+                            <br>
+                            <font color="#3e0f72">&#9608;</font>
+                            <span>$3200&ndash;$3400</span>
+                            <br>
+                            <font color="#55147d">&#9608;</font>
+                            <span>$3000&ndash;$3200</span>
+                            <br>
+                            <font color="#6a1c81">&#9608;</font>
+                            <span>$2800&ndash;$3000</span>
+                            <br>
+                            <font color="#7e2482">&#9608;</font>
+                            <span>$2700&ndash;$2800</span>
+                            <br>
+                            <font color="#942b80">&#9608;</font>
+                            <span>$2600&ndash;$2700</span>
+                            <br>
+                            <font color="#aa327d">&#9608;</font>
+                            <span>$2500&ndash;$2600</span>
+                            <br>
+                            <font color="#c13a76">&#9608;</font>
+                            <span>$2400&ndash;$2500</span>
+                            <br>
+                            <font color="#d5436d">&#9608;</font>
+                            <span>$2300&ndash;$2400</span>
+                            <br>
+                            <font color="#e85362">&#9608;</font>
+                            <span>$2200&ndash;$2300</span>
+                            <br>
+                            <font color="#f4675c">&#9608;</font>
+                            <span>$2100&ndash;$2200</span>
+                            <br>
+                            <font color="#fb7f5e">&#9608;</font>
+                            <span>$2000&ndash;$2100</span>
+                            <br>
+                            <font color="#fe9a6a">&#9608;</font>
+                            <span>$1900&ndash;$2000</span>
+                            <br>
+                            <font color="#ffb27a">&#9608;</font>
+                            <span>$1800&ndash;$1900</span>
+                            <br>
+                            <font color="#ffcc8f">&#9608;</font>
+                            <span>$1700&ndash;$1800</span>
+                            <br>
+                            <font color="#fde4a5">&#9608;</font>
+                            <span>&ndash;$1700</span>
+                            <br>
+                        </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="container">
+        <div class="row">
+            <div class="col-12 col-md">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" class="d-block mb-2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
+                    <line x1="9.69" y1="8" x2="21.17" y2="8"></line>
+                    <line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
+                    <line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
+                    <line x1="14.31" y1="16" x2="2.83" y2="16"></line>
+                    <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
+                </svg>
+                <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Features</h5>
+                <ul class="list-unstyled text-small">
+                    <li>
+                        <a class="text-muted" href="#">Cool stuff</a>
+                    </li>
+                    <li>
+                        <a class="text-muted" href="#">Random feature</a>
+                    </li>
+                    <li>
+                        <a class="text-muted" href="#">Team feature</a>
+                    </li>
+                    <li>
+                        <a class="text-muted" href="#">Stuff for developers</a>
+                    </li>
+                    <li>
+                        <a class="text-muted" href="#">Another one</a>
+                    </li>
+                    <li>
+                        <a class="text-muted" href="#">Last time</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Resources</h5>
+                <ul class="list-unstyled text-small">
+                    <li>
+                        <a class="text-muted" href="#">Resource</a>
+                    </li>
+                    <li>
+                        <a class="text-muted" href="#">Resource name</a>
+                    </li>
+                    <li>
+                        <a class="text-muted" href="#">Another resource</a>
+                    </li>
+                    <li>
+                        <a class="text-muted" href="#">Final resource</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>Resources</h5>
+                <ul class="list-unstyled text-small">
+                    <li>
+                        <a class="text-muted" href="#">Business</a>
+                    </li>
+                    <li>
+                        <a class="text-muted" href="#">Education</a>
+                    </li>
+                    <li>
+                        <a class="text-muted" href="#">Government</a>
+                    </li>
+                    <li>
+                        <a class="text-muted" href="#">Gaming</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6 col-md">
+                <h5>About</h5>
+                <ul class="list-unstyled text-small">
+                    <li>
+                        <a class="text-muted" href="#">Team</a>
+                    </li>
+                    <li>
+                        <a class="text-muted" href="#">Locations</a>
+                    </li>
+                    <li>
+                        <a class="text-muted" href="#">Privacy</a>
+                    </li>
+                    <li>
+                        <a class="text-muted" href="#">Terms</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
+    <script>
+        var mymap = L.map('map').setView([42.355594, -71.0828231], 13);
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox.streets',
+            accessToken: 'pk.eyJ1IjoiMGp1c3QwIiwiYSI6ImNqNHk0cmZwaDFsMzkycXBmNTExNmY4engifQ.nDKkFd9Ipmq8VJetCoFNeQ'
+        }).addTo(mymap);
+
+        imageBounds = [[42.255594, -71.1828231], [42.4351936, -70.975800]];
+
+        L.imageOverlay("/Users/Dmitry/python_programming/flat_price_analytics/my_files/web/over.png", imageBounds).setOpacity(0.5).addTo(mymap);
+    </script>
+</body>
+
+</html>
